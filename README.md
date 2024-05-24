@@ -7,6 +7,9 @@ An e-learning website for primary students to learn how to be fast fingers
 ## Summary
 As a backend developer, I built the website for primary students can learn how to practise in typing. This website features outstanding functions such as allowing students and teachers to register member accounts to manage classes. Teachers can freely organize typing practice lessons and conduct exams for students. This learning system includes a ranking competition mode to make learning more engaging for students. Additionally, there is a practice feature with 2D games developed on Phaser 4 to enhance children's interest in the learning system.
 
+## Technical skills
+Python, Django, Ajax, Docker, CI/CD (gitlab), server-deployment, JavaScript, Phaser4, HTML, CSS
+
 ## Installation
 This project just kept code only, in the 2.0 version, it becomes to the website which can be expand for meta data. So in this version, It just used render-server-site only.
 

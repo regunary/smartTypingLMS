@@ -1,0 +1,153 @@
+{% extends "homepage/base.html" %}
+{% load static %}
+{% block content %}
+<!-- <div class="content-wrapper test"> -->
+<div class="" style="background-image: url('static/img/background/bg-test.png');">
+    <div class="breadcrumb-wrap bg-f br-bg-4">
+        <div class="overlay op-5 bg-white"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+                    <div class="breadcrumb-title">
+                        <h2>Tranh Tài Cùng Ong Vàng</h2>
+                        <ul class="breadcrumb-menu list-style">
+                            <li><a href="{% url 'homepage:index' %}">Trang chủ </a></li>
+                            <li>Kiểm tra</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="course-wrap ptb-100">
+        <div class="container">
+            <!-- voice -->
+            <iframe src="/media/voice/test/test.wav" allow="autoplay" style="display:none" id="iframeAudio"></iframe> 
+            <audio autoplay loop id="playAudio" >
+                <source src="/media/voice/test/test.wav" type="audio/wav">
+            </audio>
+            <script>
+                var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+                if (!isChrome){
+                    $('#iframeAudio').remove()
+                }
+                else {
+                    $('#playAudio').remove() // just to make sure that it will not have 2x audio in the background 
+                }
+            </script>
+            <!-- end voice -->
+            {% csrf_token %}
+            <!-- <h2 class="text-danger text-center"><i class="far fa-keyboard"></i>KIỂM TRA THEO THỜI GIAN</h2> -->
+            <h2 class="text-center">
+                <svg width="1000" height="100">
+                    <rect x="20" y="20" rx="20" ry="20" width="960" height="80" style="fill:red;stroke:black;stroke-width:2;" />
+                    Sorry, your browser does not support inline SVG.
+                    <text fill="#ffffff" font-size="40" x="320" y="75">KIỂM TRA THEO THỜI GIAN</text>
+                </svg>
+            </h2>
+            <h2 class="text-center">
+                <audio id="voice-timetest" src="/media/voice/test/timetest.wav"></audio>
+                <a onclick="document.getElementById('voice-timetest').play()">
+                    <i class='fa fa-volume-up text-green' style="width: 100px;border: 2px solid black;background: white;"></i>
+                </a>
+            </h2>
+
+            <div class="row justify-content-center">
+                {% for test in timetest1 %}
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="course-card style3">
+                        <div class="course-img">
+                            <img src="{{test.image}}" alt="Image">
+                        </div>
+                        <div class="course-info text-center">
+                            <div class="course-metainfo">
+                                <div class="course-Lectures">
+                                </div>
+                                <div class="course-enroll">
+                                    <a href="{% url 'homepage:timetestdetail' test.pk %}" class="btn">KIỂM TRA</a>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="row justify-content-center">
+                {% for test in timetest2 %}
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="course-card style3">
+                        <div class="test-img">
+                            <img src="{{test.image}}" alt="Image">
+                        </div>
+                        <div class="course-info text-center">
+                            <div class="course-metainfo">
+                                <div class="course-Lectures">
+                                    <!-- <a href="course-details.html">60 giây</a> -->
+                                </div>
+                                <div class="course-enroll">
+                                    <a href="{% url 'homepage:timetestdetail' test.pk %}" class="btn">KIỂM TRA</a>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- <h2 class="text-danger text-center"><i class="far fa-keyboard"></i>KIỂM TRA THEO VĂN BẢN</h2> -->
+            <h2 class="text-center">
+                <svg width="1000" height="100">
+                    <rect x="20" y="20" rx="20" ry="20" width="960" height="80" style="fill:red;stroke:black;stroke-width:2;" />
+                    Sorry, your browser does not support inline SVG.
+                    <text fill="#ffffff" font-size="40" x="320" y="75">KIỂM TRA THEO VĂN BẢN </text>
+                </svg>
+            </h2>
+            <h2 class="text-center">
+                <audio id="voice-contenttest" src="/media/voice/test/contenttest.wav"></audio>
+                <a onclick="document.getElementById('voice-contenttest').play()">
+                    <i class='fa fa-volume-up text-green' style="width: 100px;border: 2px solid black;background: white;"></i>
+                </a>
+            </h2>
+            <div class="row justify-content-center">
+                {% for test in contenttest %}
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="course-card style3">
+                        <div class="course-img">
+                            <img src="{{test.image}}" alt="Image">
+                            <!-- <img src="{{lesson.image}}" alt="{{lesson.image}}"> -->
+
+                            <!-- <img src="media/lessons/images/avatar.png" alt="Image"> -->
+                        </div>
+                        <div class="course-info text-center">
+                            <!-- <h3 class="course-title">
+                                <a href="course-details.html">{{test.description}}</a>
+                            </h3> -->
+                            <!-- <div class="course-rating-wrap">
+                                <div class="course-category">
+                                    <h3><a href="">KIỂM TRA</a></h3>
+                                </div>
+                                
+                                
+                            </div> -->
+                            <div class="course-metainfo">
+                                <div class="course-Lectures">
+                                    <!-- <a href="course-details.html">60 giây</a> -->
+                                </div>
+                                <div class="course-enroll">
+                                    <a href="{% url 'homepage:contenttestdetail' test.pk %}" class="btn">KIỂM TRA</a>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% load static %}
+<div class="sidebar" data-color="purple" data-background-color="white" data-image="/static/assets/img/sidebar-1.jpg">
+  <div class="logo">
+    <div class="row justify-content-center">
+      <a href="{% url 'homepage:index' %}"><i class="fa fa-home"></i></a>
+      <img id="{{account.pk}}" src="/{{account.callsignid.frame}}" alt="Image" style="z-index: 3; position: absolute; margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 10px; width: 220px; height: 220px">
+      <img src="{{account.avatar}}" alt="Image" style="z-index: 1; position: absolute; margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 10px; margin-top: 35px; width: 215px; height: 150px; border-radius: 50%;">
+      
+      <form class="text-center" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <img onclick="myFunction('change_ava')" src="{% static 'img/dashboard/camera.png' %}" alt="Image" style="z-index: 1; margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 10px; margin-top: 180px; width: 80px;">
+        <div id="change_ava" class="file-upload-wrapper hide" data-text="Chọn ảnh đại diện">
+            <input id="avatar" name="avatar" type="file" class="file-upload-field" value="" accept=".jpg,.png">
+            <button class="btn btn-primary" style="width: 50%;">Đổi</button>
+        </div>
+      </form>
+      <a rel="noopener noreferrer" href="" class="simple-text logo-normal" style="padding-top: 0;">
+        <h2>{{account.username}}</h2>
+      </a>
+    </div>
+
+    <script>
+      function myFunction(id) {
+          var x = document.getElementById(id);
+          if (x.className.indexOf("show") == -1) {
+              x.className += "show";
+          } else {
+              x.className = x.className.replace("show", "");
+          }
+      }
+    </script>
+
+
+    <!-- <form class="mb-100" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row justify-content-center">
+        <img src="/{{account.callsignid.frame}}" alt="Image" style="z-index: 3; position: absolute; margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 10px; width: 220px; height: 220px">
+        <img src="{{account.avatar}}" alt="Image" style="z-index: 1; position: absolute; margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 10px; margin-top: 10px; width: 215px; height: 185px; border-radius: 50%;">
+        <a href="{% url 'homepage:dashboard' user.pk %}">
+          <button>
+            Đổi ảnh
+          </button>
+        </a>
+        <div class="file-upload-wrapper" data-text="Chọn ảnh đại diện">
+          <img src="{% static 'img/dashboard/camera.png' %}" alt="Image" style="z-index: 1; position: absolute; margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 10px; margin-top: 180px; width: 80px;">
+            <input id="avatar" name="avatar" type="file" class="file-upload-field" value="" accept=".jpg,.png" required="required" style="position: absolute">
+        </div>
+      </div>
+    </form> -->
+
+  </div>
+
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      {% if request.user.is_authenticated %}
+      <li class="nav-item {% if path == 'HoatDong' %} active {% endif %}">
+      <a class="nav-link" href="{% url 'homepage:dashboard' user.pk %}">
+        <i class="material-icons"></i>
+        <p>Hoạt động</p>
+      </a>
+      </li>
+      <li class="nav-item {% if 'page-user' in segment %} active {% endif %}">
+        <a class="nav-link" href="{% url 'homepage:updateinfo' %}">
+          <i class="material-icons"></i>
+          <p>Thông tin</p>
+        </a>
+      </li>
+      <li class="nav-item {% if path == 'ThanhTuu' %} active {% endif %}">
+        <a class="nav-link" href="{% url 'homepage:achievement' %}">
+          <i class="material-icons"></i>
+          <p>Thành tựu</p>
+        </a>
+      </li>
+
+      <li class="nav-item ">
+        <a class="nav-link" href="{% url 'homepage:logout' %}">
+          <i class="material-icons"></i>
+          <p>Đăng xuất</p>
+        </a>
+      </li>
+
+      {% else %}
+
+      <li class="nav-item active">
+        <a class="nav-link" target="_blank" rel="noopener noreferrer"
+          href="https://appseed.us/admin-dashboards/django-dashboard-material-pro">
+          <i class="material-icons">unarchive</i>
+          <p>PRO Version</p>
+        </a>
+      </li>
+
+      {% endif %}
+    </ul>
+  </div>
+
+</div>

@@ -1,0 +1,128 @@
+{% extends "homepage/base2.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- <div class="content-wrapper"> -->
+<div>
+
+    <!-- <div class="breadcrumb-wrap bg-f br-bg-4">
+    <div class="overlay op-5 bg-white"></div>
+         <div class="container">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+                    <div class="breadcrumb-title">
+                        <h2>Vui học cùng Ong Vàng</h2>
+                        <ul class="breadcrumb-menu list-style">
+                            <li><a href="{% url 'homepage:index' %}">Trang chủ </a></li>
+                            <li>Bài học</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <ul class="nav justify-content-center bg-success">
+        <li class="navbar-brand">
+            <a href="{% url 'homepage:index' %}">
+                <img src="{% static 'img/logo.png' %}" alt="Image" width="100" height="30" />
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'homepage:index' %}"><i class="fa fa-home"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'homepage:competition' %}">Quay lại</a>
+        </li>
+      </ul>
+
+    <!-- <section class="course-wrap ptb-100"> -->
+    <section class="pt-2 pb-5">
+        <div class="container pt-3">
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+            <div id="gamediv" class="d-flex justify-content-center">
+                <a href="#">
+                    <button class="btn style3 slide_left">HƯỚNG DẪN</button> 
+                    <!-- SHOW VIDEO HƯỚNG DẪN -->
+                </a>
+                <iframe id="iframegame" src="{{competition.link}}" style="position:fixed; top:50px; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
+                    Your browser doesn't support iframes
+                </iframe>
+
+                <!-- <iframe id="iframegame"
+                    style="width: 1200px; height:700px; overflow: hidden;border-radius: 10px;padding: 1px;background: rgb(80, 78, 69)"
+                    src={{competition.link}} scrolling="no">
+                </iframe> -->
+                <a href="{% url 'homepage:competition' %}">
+                    <button class="btn style3 slide_left">QUAY LẠI</button> 
+                </a>
+            </div>
+
+            <script>
+                var competitionid = "{{competition.pk}}"
+                console.log(competitionid)
+                function sendtobackend(score, sumtime, own_badge) {
+                    $.ajax({
+                        url: "/ajaxtrackcompletecompetition",
+                        data: {
+                            'competitionid': competitionid,
+                            'score': score,
+                            'sumtime': sumtime,
+                            'own_badge': own_badge,
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data.flag) {
+                                console.log('json')
+                                clearInterval(loops)
+                                // $('#thacmac').html("Hỏi Đáp")
+                                // $('#thacmaccontent').html("Em Vừa Hoàn Thành Trò Chơi Này Kết Quả Đã Được Lưu Lại")
+                                // wingame();
+                            }
+                        }
+                    })
+                }
+                // function wingame(){
+                //                     $.magnificPopup.open({
+                //                     items: {
+                //                     src: '#winpop'
+                //                         },
+                //                     closeBtnInside: true,
+                //                     type: 'inline'
+                //                     });
+                //                 }
+
+                $(document).ready(function () {
+                    setTimeout(function () {
+                        loops = setInterval(function () {
+                            var check = document.getElementById("iframegame").contentWindow.blazewarriorsstatusgame;
+                            var score = document.getElementById("iframegame").contentWindow.score;
+                            var sumtime = document.getElementById("iframegame").contentWindow.sumTime;
+                            var own_badge = document.getElementById("iframegame").contentWindow.own_badge;
+
+                            console.log(check)
+                            console.log(score, sumtime, own_badge)
+
+                            if (check == true) {
+                                clearInterval(loops)
+                                setTimeout(function () {
+                                    sendtobackend(score, sumtime, own_badge);
+                                }, 1000)
+                            }
+                        }, 500);
+
+                    }, 1000)
+                })
+            </script>
+            {% else %}
+                <h1 class="text-center"><a class="text-primary" href="{% url 'homepage:login' %}">Đăng nhập</a> để tham gia cuộc thi nhé!</h1>
+            {% endif %}
+            
+        </div>
+    </section>
+</div>
+
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends "homepage/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="" style="background-color: #fddd2a14; background-image: url(../../static/img/background/bg-lesson.png);">
+
+    <div class="breadcrumb-wrap bg-f br-bg-4">
+        <div class="overlay op-5 bg-white"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+                    <div class="breadcrumb-title">
+                        <h2>Kết Nối Tri Thức</h2>
+                        <ul class="breadcrumb-menu list-style">
+                            <li><a href="{% url 'homepage:index' %}">Trang chủ </a></li>
+                            <li>Bài học</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="course-wrap ptb-100">
+
+        <div class="container">
+            <!-- voice -->
+            <iframe src="/media/voice/lesson/lesson.wav" allow="autoplay" style="display:none" id="iframeAudio"></iframe>
+            <audio autoplay loop id="playAudio">
+                <source src="/media/voice/lesson/lesson.wav" type="audio/wav">
+            </audio>
+            <script>
+                var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+                if (!isChrome) {
+                    $('#iframeAudio').remove()
+                }
+                else {
+                    $('#playAudio').remove() // just to make sure that it will not have 2x audio in the background 
+                }
+            </script>
+            <!-- end voice -->
+            <div class="course-details">
+                <div class="row">
+                    <div>
+                        <h6 class="text-center text-success" style="font-size:35px">HỌC CÁCH GÕ VÀ GHI NHỚ VỊ TRÍ PHÍM QUA CÁC CHỦ ĐỀ VÀ BÀI HỌC ĐẦY BỔ ÍCH
+                            <audio id="lesson-instruct" src="/media/voice/lesson/lesson_intruct.wav"></audio>
+                            <a onclick="document.getElementById('lesson-instruct').play()"><i class='fa fa-volume-up text-danger'></i></a>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <br>
+            
+            <a href="https://www.youtube.com/watch?v=Af_Hc7prsUc" target="blank" class="text-danger">
+                <h2 class="text-danger"><i class="fa fa-youtube-play"></i>&ensp; HƯỚNG DẪN TẮT BỘ GÕ TIẾNG VIỆT
+                    <audio id="lesson-topic0" src="/media/voice/lesson/topic0.wav"></audio>
+                    <a onclick="document.getElementById('lesson-topic0').play()"><i class='fa fa-volume-up text-dark'></i></a>
+                </h2>
+            </a>
+            {% csrf_token %}
+            {% for topic, lessons in topiclessons.items %}
+            <div style="position: relative; left: 0; top: 0;">
+                <h2 class="text-danger"><i class="fa fa-keyboard-o"></i>&ensp;{{topic}}
+                    <audio id="lesson-{{topic.topicorder}}" src="/media/voice/lesson/topic{{topic.topicorder}}.wav"></audio>
+                    <a onclick="document.getElementById('lesson-{{topic.topicorder}}').play()"><i class='fa fa-volume-up text-dark'></i></a>
+                </h2>
+                {% if topic.has_badge %}
+                <img src="/media/lessons/images/HuyHieu/topic{{topic.topicorder}}.png" style="background-color: white;z-index: 3;position: absolute;width: 70px;top: -10px;left: -30px;">
+                {% endif %}
+            </div>
+            <div class="row">
+                {% for lesson in lessons %}
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="course-card style3">
+                        <div class="course-img">
+                            {% if user.is_authenticated %}                            
+                                {% if topic.lock is False %}
+                                <a href="{% url 'homepage:lessondetail' topic.pk lesson.pk %}">
+                                    <img src="/{{lesson.image}}" alt="Image">
+                                </a>
+                                {% else %}
+                                <img src="/media/lessons/images/lock.png" alt="Image">
+                                {% endif %}
+                            {% else %}
+                                {% if lesson.lessonorder <= 3 %} 
+                                <a href="{% url 'homepage:lessondetail' topic.pk lesson.pk %}">
+                                    <img src="/{{lesson.image}}" alt="Image">
+                                </a>
+                                {% else %}
+                                <img src="/media/lessons/images/lock.png" alt="Image">
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                        <div class="course-info">
+                            <h3 class="course-title">{{lesson.description}}</h3>
+                            <div class="course-rating-wrap">
+                                <div class="course-category">
+                                    <a {% if user.is_authenticated and topic.lock is False %} href="{% url 'homepage:lessondetail' topic.pk lesson.pk %}" {% endif %}>
+                                        {{lesson.name}}
+                                    </a>
+                                </div>
+                                <ul class="ratings list-style">
+                                    {# with ''|center:lesson.stars as range #}
+                                    {# for _ in range #}
+                                    <!-- {{ forloop.counter }} -->
+                                    <!-- <li><i class="las la-star"></i></li> -->
+                                    {# endfor #}
+                                    {# endwith #}
+                                </ul>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    {{lesson.percent}}%
+                                </div>
+                                <div class="col-2">
+                                    <div class="skills style1" style="width: 500%; padding: auto">
+                                        <div class="skillbar clearfix" data-percent="89%">
+                                            <div class="skillbar-bar" style="width: {{lesson.percent}}%">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% if lesson.percent == 100 %}
+                                <div class="col-7" align="right">
+                                    <i class="fa fa-trophy" style="color: red; font-size: 35px;"></i>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+
+{% endblock %}

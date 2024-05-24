@@ -1,0 +1,223 @@
+{% extends "homepage/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<section class="hero-wrap bg-f style1 hero-bg-1">
+    <!-- <div class="hero-shape-1">
+        <img src="{% static 'img/hero/hero-shape-1.png' %}" alt="Image" />
+    </div> -->
+    <div class="hero-shape-2">
+        <img src="{% static 'img/hero/hero-shape-2.svg' %}" alt="Image" />
+    </div>
+    <div class="hero-shape-3">
+        <img src="{% static 'img/hero/hero-curve-shape-1.svg' %}" alt="Image" />
+    </div>
+    <div class="hero-shape-4">
+        <img src="{% static 'img/hero/hero-curve-shape-2.svg' %}" alt="Image" />
+    </div>
+    <div class="hero-shape-5">
+        <img src="{% static 'img/hero/hero-dot-shape-1.svg' %}" alt="Image" />
+    </div>
+    <div class="hero-shape-6">
+        <img src="{% static 'img/hero/hero-dot-shape-2.svg' %}" alt="Image" />
+    </div>
+    <div class="container">
+        <!-- voice -->
+        <iframe src="/media/voice/index/index.wav" allow="autoplay" style="display:none" id="iframeAudio"></iframe>
+        <audio autoplay loop id="playAudio">
+            <source src="/media/voice/index/index.wav" type="audio/wav">
+        </audio>
+        <script>
+            var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+            if (!isChrome) {
+                $('#iframeAudio').remove()
+            }
+            else {
+                $('#playAudio').remove() // just to make sure that it will not have 2x audio in the background 
+            }
+        </script>
+        <!-- end voice -->
+
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 offset-lg-0 col-md-8 offset-md-2 col-sm-8 offset-sm-2">
+                <div class="hero-img">
+                    <img src="{% static 'img/index/bg.png' %}" alt="Image" />
+                    <!-- <img src="{% static 'img/index/bgnew.png' %}" alt="Image" />-->
+                    <!-- <div class="tenor-gif-embed" data-postid="14602819" data-share-method="host" data-aspect-ratio="1" data-width="50%"><a href="https://tenor.com/view/beckadoodles-kawaii-cute-bumble-bee-bee-gif-14602819">Beckadoodles Kawaii Sticker</a>from <a href="https://tenor.com/search/beckadoodles-stickers">Beckadoodles Stickers</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script> -->
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <span>XIN CHÀO CÁC EM!
+                        <audio id="voice-background" src="/media/voice/index/background.wav"></audio>
+                        <a onclick="document.getElementById('voice-background').play()"><i class='fa fa-volume-up text-danger'></i></a>
+                    </span>
+                    <h1> Hãy cùng khám phá và gặp gỡ gia đình Ong Vàng qua những bài học bổ ích nhé!</h1>
+                    <div class="hero-btn">
+                        <a href="{% url 'homepage:aboutbee' %}" class="btn style2 slide-right"><i class="flaticon-view"></i>XEM THÊM</a>
+                        <a href="{% url 'homepage:lesson' %}" class="btn style1 slide_right"><i class="flaticon-pencil-1">HỌC NGAY</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="promo-wrap style1 ptb-100">
+    <div class="promo-dot-shape">
+        <img src="{% static 'img/promo-dot-shape.svg' %}" alt="Image" />
+    </div>
+    <div class="promo-curve-1">
+        <img src="{% static 'img/promo-curve-1.svg' %}" alt="Image" />
+    </div>
+    <div class="promo-curve-2 lg-none">
+        <img src="{% static 'img/promo-curve-2.svg' %}" alt="Image" />
+    </div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-4 col-lg-4 col-md-6">
+                <div class="promo-item style1">
+                    <div class="promo-icon">
+                        <img src="{% static 'img/promo-icon-bg.svg' %}" alt="Image" />
+                        <i class="flaticon-certificate"></i>
+                    </div>
+                    <h4>
+                        <a href="{% url 'homepage:lesson' %}">NHỮNG BÀI HỌC BỔ ÍCH </a>
+                        <audio id="voice-lesson" src="/media/voice/index/lesson.wav"></audio>
+                        <a onclick="document.getElementById('voice-lesson').play()"><i class='fa fa-volume-up text-danger'></i></a>
+                    </h4>
+                    <p>
+                        Hãy đến ngay với những bài học thú vị và bổ ích cùng Chị Ong Ham Học nào,
+                        những bài học này sẽ giúp các em ghi nhớ được bàn phím và các vị trí ngón tay đặt phím đấy nhé.
+                    </p>
+                    <a href="{% url 'homepage:lesson' %}" class="btn style1 slide_left"><i class="flaticon-view"></i>Học Ngay</a>
+                </div>
+            </div>
+
+            <div class="col-xl-4 offset-xl-0 col-lg-4 offset-lg-0 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-10 offset-1">
+                <div class="promo-img">
+                    <img src="{% static 'img/index/sm1.png' %}" alt="Image" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="about-wrap">
+    <div class="about-circle-shape-4 sm-none">
+        <img src="{% static 'img/about/circle-shape-10.svg' %}" alt="Image" />
+    </div>
+    <div class="about-dot-shape-4 md-none">
+        <img src="{% static 'img/about/dot-shape-10.svg' %}" alt="Image" />
+    </div>
+    <div class="about-zigzag lg-none">
+        <img src="{% static 'img/about/zigZag.svg' %}" alt="Image" />
+    </div>
+    <div class="about-wave sm-none">
+        <img src="{% static 'img/about/wave.svg' %}" alt="Image" />
+    </div>
+    <div class="container">
+        <div class="row gx-5">
+            <div class="col-lg-6">
+                <div class="about-img-wrap">
+                    <div class="promo-img">
+                        <img src="{% static 'img/index/sm3.png' %}" alt="Image" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                    <div class="promo-item style1">
+                        <div class="promo-icon">
+                            <img src="{% static 'img/promo-icon-bg.svg' %}" alt="Image" />
+                            <i class="flaticon-certificate"></i>
+                        </div>
+                        <h4>
+                            <a href="{% url 'homepage:lesson' %}">CÁC TRÒ CHƠI ĐA DẠNG </a>
+                            <audio id="voice-game" src="/media/voice/index/game.wav"></audio>
+                            <a onclick="document.getElementById('voice-game').play()"><i class='fa fa-volume-up text-danger'></i></a>
+                        </h4>
+                        <p>
+                            Cùng Cậu Ong Chăm Chỉ phiêu lưu cuộc hành trình săn lùng khó báu nào, những chuyến phiêu lưu sẽ giúp các em nâng cao kỹ năng gõ phím đó!
+                        </p>
+                        <a href="{% url 'homepage:practice' %}" class="btn style1 slide_left"><i class="flaticon-view"></i>Chơi Ngay</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="team-wrap style1 ptb-100">
+    <div class="container">
+        <div class="team-circle-shape sm-none">
+            <img src="{% static 'img/team-circle-shape-1.svg' %}" alt="Iamge" />
+        </div>
+        <div class="team-dot-shape">
+            <img src="{% static 'img/team-dot-shape.svg' %}" alt="Iamge" />
+        </div>
+        <div class="row align-items-center">
+            <div class="col-xl-4 col-lg-10 col-md-10">
+                <div class="content-title style1 mb-40 ext-left sm-center team-title">
+                    <h4>
+                        <a href="{% url 'homepage:test' %}">NHIỀU CHẾ ĐỘ KIỂM TRA</a>
+                        <audio id="voice-test" src="/media/voice/index/test.wav"></audio>
+                        <a onclick="document.getElementById('voice-test').play()"><i class='fa fa-volume-up text-danger'></i></a>
+                    </h4>
+                    <p>
+                        Em có muốn kiểm tra kỹ năng gõ phím của mình và nắm bắt được độ chính xác khi gõ phím không? Hãy cùng Chú Ong Tài Năng làm bài kiểm tra nhé!
+                    </p>
+                    <a href="{% url 'homepage:test' %}" class="btn style1 lg-none"><i class="flaticon-teacher"></i>Kiểm Tra Ngay</a>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6">
+                <div class="team-card style1">
+                    <div class="team-member-img">
+                        <img src="{% static 'img/index/sm2.png' %}" alt="Image" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="about-wrap">
+    <div class="about-circle-shape-4 sm-none">
+        <img src="{% static 'img/about/circle-shape-10.svg' %}" alt="Image" />
+    </div>
+    <div class="about-dot-shape-4 md-none">
+        <img src="{% static 'img/about/dot-shape-10.svg' %}" alt="Image" />
+    </div>
+    <div class="about-zigzag lg-none">
+        <img src="{% static 'img/about/zigZag.svg' %}" alt="Image" />
+    </div>
+    <div class="about-wave sm-none">
+        <img src="{% static 'img/about/wave.svg' %}" alt="Image" />
+    </div>
+    <div class="container-fluid container-full-left">
+        <div class="row gx-5">
+            <div class="col-lg-6">
+                <div class="about-img-wrap">
+                    <div class="promo-img">
+                        <img src="{% static 'img/index/sm3.png' %}" alt="Image" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="about-content">
+                    <div class="content-title style1">
+                        <h4>
+                            <a href="{% url 'homepage:competition' %}">CÁC CUỘC THI THÚ VỊ</a>
+                            <audio id="voice-competition" src="/media/voice/index/competition.wav"></audio>
+                            <a onclick="document.getElementById('voice-competition').play()"><i class='fa fa-volume-up text-danger'></i></a>
+                        </h4>
+                        <p>
+                            Hàng tháng sẽ có các cuộc thi định kỳ diễn ra đấy nhé! Hãy cùng tranh tài và tạo nên sân chơi gõ phím lành mạnh nào!
+                        </p>
+                    </div>
+
+                    <a href="{% url 'homepage:competition' %}" class="btn style1 slide_left"><i class="flaticon-view"></i>Thi Ngay</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

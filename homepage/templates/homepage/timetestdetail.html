@@ -1,0 +1,56 @@
+{% extends "homepage/base.html" %}
+{% load static %}
+{% block content %}
+<link href="/media/test/timetest1/test.css" rel="stylesheet" />
+
+<div class="" style="background-color:#fffde4;">
+
+    <div class="breadcrumb-wrap bg-f br-bg-4">
+      <div class="overlay op-5 bg-white"></div>
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+                  <div class="breadcrumb-title">
+                      <h2>{{test.name}}</h2>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  <div class="container">
+    <h3> CPM (Charater per minute): tính số ký tự gõ trong 1 phút. </h3>
+    <h3> WPM (Word per minute): tính số từ gõ trong 1 phút.</h3>
+    
+    
+    <div class="header">
+      <div class="errors">
+        <div class="header_text">Lỗi</div>
+        <div class="curr_errors">0</div>
+      </div>
+      <div class="timer">
+        <div class="header_text">Thời gian</div>
+        <div class="curr_time">{{test.time}}s</div>
+      </div>
+      <div class="accuracy">
+        <div class="header_text">% Độ chính xác</div>
+        <div class="curr_accuracy">100</div>
+      </div>
+      <div class="wpm">
+        <div class="header_text">WPM</div>
+        <div class="curr_wpm">0</div>
+      </div>
+      <div class="cpm">
+        <div class="header_text">CPM</div>
+        <div class="curr_cpm">0</div>
+      </div>
+    </div>
+    
+    <div class="quote">Em hãy nhấn vào khung ở dưới để bắt đầu.</div>
+    <textarea class="input_area" placeholder="Hãy nhập tại đây..." oninput="processCurrentText()" onfocus="startGame('{{test.time}}')"></textarea>
+  <button class="restart_btn" onclick="resetValues()">Làm lại</button>
+  <p>Truyện được lấy từ <a href="https://sachhay24h.com/truyen-co-tich.html" target="_blank" class="text-primary">SachHay24h.Com</a></p>
+</div>
+<script src="/media/test/timetest1/game.js"></script>
+ 
+</div>
+{% endblock %}

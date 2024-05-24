@@ -1,0 +1,109 @@
+{% extends "homepage/base2.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- <div class="content-wrapper"> -->
+<div style="background-image: url(/media/backgrounds/activity.png); background-size: cover;">
+
+    <!-- <div class="breadcrumb-wrap bg-f br-bg-4">
+        <div class="overlay op-8 bg-white"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+                    <div class="breadcrumb-title">
+                        <h2>Vui học cùng Ong Vàng</h2>
+                        <ul class="breadcrumb-menu list-style">
+                            <li><a href="{% url 'homepage:index' %}">Trang chủ </a></li>
+                            <li>Bài học</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- <section class="course-wrap ptb-100"> -->
+    <section class="pt-2 pb-5">
+        <div class="container">
+            <div id="gamediv" class="d-flex justify-content-center bg-white" style="border-radius: 10px">
+                <div style="width: 200px; padding-right: 10px;">
+                    <a href="{% url 'homepage:lessondetail' topiclesson.pk lesson.pk %}">
+                        <button class="btn btn-warning text-white" style="margin-bottom:5px; width: 170px">QUAY LẠI</button> 
+                    </a>
+                    <a href="https://www.youtube.com/watch?v={{video}}" target="_blank">
+                        <button class="btn style3" style="width: 170px">HƯỚNG DẪN</button>
+                    </a>
+                    <p class="text-center">{{activity.description}}</p>
+                    <!-- SHOW VIDEO HƯỚNG DẪN -->
+                    <img src="/media/backgrounds/bee1.png" alt="none">
+                </div>
+                <iframe id="iframegame"
+                    style="width: 1200px; height:700px; overflow: hidden;border-radius: 10px;padding: 1px;background: rgb(80, 78, 69)"
+                    src={{activity.link}} scrolling="no">
+                </iframe>
+                <!-- <iframe id="iframegame"
+                    style="width: 1200px; height:700px; overflow: hidden;border-radius: 10px;padding: 1px;background: rgb(80, 78, 69)"
+                    src="/media/lessons/script3/index{{activity.lessonid.lessonorder}}.html" scrolling="no">
+                </iframe> -->
+            </div>
+
+            <script>
+                var topiclessonid = "{{topiclesson.pk}}"
+                var lessonid = "{{lesson.pk}}"
+                var activityid = "{{activity.pk}}"
+                console.log(activityid)
+                function sendtobackend() {
+                    $.ajax({
+                        url: "/ajaxtrackcompleteactivity",
+                        data: {
+                            'topiclessonid': topiclessonid,
+                            'lessonid': lessonid,
+                            'activityid': activityid,
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data.flag) {
+                                console.log('json')
+                                clearInterval(loops)
+                                // $('#thacmac').html("Hỏi Đáp")
+                                // $('#thacmaccontent').html("Em Vừa Hoàn Thành Trò Chơi Này Kết Quả Đã Được Lưu Lại")
+                                // wingame();
+                            }
+                        }
+                    })
+                }
+                // function wingame(){
+                //                     $.magnificPopup.open({
+                //                     items: {
+                //                     src: '#winpop'
+                //                         },
+                //                     closeBtnInside: true,
+                //                     type: 'inline'
+                //                     });
+                //                 }
+
+                $(document).ready(function () {
+                    setTimeout(function () {
+                        loops = setInterval(function () {
+                            var check = document.getElementById("iframegame").contentWindow.blazewarriorsstatusgame;
+                            console.log(check)
+
+                            if (check == true) {
+                                clearInterval(loops)
+
+                                setTimeout(function () {
+                                    sendtobackend();
+                                }, 1000)
+                            }
+                        }, 500);
+
+                    }, 1000)
+                })
+            </script>
+        </div>
+    </section>
+</div>
+
+{% endblock %}

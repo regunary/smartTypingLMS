@@ -1,0 +1,112 @@
+{% extends "homepage/base2.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- <div class="content-wrapper"> -->
+
+<!-- <div class="breadcrumb-wrap bg-f br-bg-4">
+        <div class="overlay op-8 bg-white"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+                    <div class="breadcrumb-title">
+                        <h2>Vui học cùng Ong Vàng</h2>
+                        <ul class="breadcrumb-menu list-style">
+                            <li><a href="{% url 'homepage:index' %}">Trang chủ </a></li>
+                            <li>Bài học</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+<!-- <section class="course-wrap ptb-100"> -->
+<section class="pt-2">
+    <div class="container">
+        {% csrf_token %}
+
+        <div id="gamediv" class="d-flex justify-content-center bg-white" style="border-radius: 10px">
+            {% if game.gameorder != 6 %} 
+            <div style="width: 200px; padding-right: 10px;">
+                <a href="{% url 'homepage:practicelevel' game.gameid %}">
+                    <button class="btn btn-warning text-white" style="margin-bottom:5px; width: 170px">QUAY LẠI</button>
+                </a>
+                <a href="https://www.youtube.com/watch?v={{video}}" target="_blank">
+                    <button class="btn style3" style="width: 170px">HƯỚNG DẪN</button>
+                </a>
+                <!-- <p class="text-center">{{activity.description}}</p> -->
+            </div>
+            <iframe id="iframegame"
+                style="width: 1200px; height:700px; overflow: hidden;border-radius: 10px;padding: 1px;background: rgb(80, 78, 69)"
+                src='{{level.link}}' scrolling="no">
+            </iframe>
+            {% else %} 
+            <iframe id="iframegame" src="{{level.link}}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
+                Your browser doesn't support iframes
+            </iframe>
+            {% endif %}
+        </div>
+        <script>
+            var gameid = "{{game.pk}}"
+            var topicid = "{{game.topicpracticeid.pk}}"
+            var levelid = "{{level.pk}}"
+
+            function sendtobackend(stars) {
+                $.ajax({
+                    url: "/ajaxtrackcompletelevelgame",
+                    data: {
+                        'gameid': gameid,
+                        'topicid': topicid,
+                        'levelid': levelid,
+                        'stars': stars,
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.flag) {
+                            console.log('json')
+                            clearInterval(loops)
+                            // $('#thacmac').html("Hỏi Đáp")
+                            // $('#thacmaccontent').html("Em Vừa Hoàn Thành Trò Chơi Này Kết Quả Đã Được Lưu Lại")
+                            // wingame();
+                        }
+                    }
+                })
+            }
+            // function wingame(){
+            //                     $.magnificPopup.open({
+            //                     items: {
+            //                     src: '#winpop'
+            //                         },
+            //                     closeBtnInside: true,
+            //                     type: 'inline'
+            //                     });
+            //                 }
+
+            $(document).ready(function () {
+                setTimeout(function () {
+                    loops = setInterval(function () {
+                        var check = document.getElementById("iframegame").contentWindow.blazewarriorsstatusgame;
+                        console.log(check)
+                        var stars = document.getElementById("iframegame").contentWindow.number_star;
+                        console.log('stars:', stars)
+
+                        if (check == true) {
+                            clearInterval(loops)
+                            setTimeout(function () {
+                                sendtobackend(stars);
+                            }, 1000)
+                        }
+                    }, 500);
+
+                }, 1000)
+            })
+        </script>
+
+
+    </div>
+</section>
+
+{% endblock %}

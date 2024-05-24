@@ -1,0 +1,70 @@
+{% extends "homepage/base_dashboard.html" %}
+
+{% block title %} Smart Typing {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+  <h1 class="text-center">HUY HIỆU HỌC HỎI</h1>
+  {% for lessonbadge in lessonbadges %}
+  <div class="col-xl-4 col-lg-6 col-md-6 text-center">
+    <div class="course-card style3" style="border: none; border-radius: 50px; ">
+      <div  style="border-radius: 50px;">
+        {% if lessonbadge == "lock" %}
+        <img src="/media/lessons/images/HuyHieu/lock.png" alt="lock" style="width:50%; border-radius: 50px;">
+        {% else %}
+        <img src="/media{{lessonbadge.logo}}" alt="{{lessonbadge.logo}}" style="width:50%; border-radius: 50px;">
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<div class="row justify-content-center">
+  <h1 class="text-center">HUY HIỆU PHIÊU LƯU</h1>
+  {% for practicebadge in practicebadges %}
+  <div class="col-xl-4 col-lg-6 col-md-6 text-center">
+    <div class="course-card style3" style="border: none; border-radius: 50px; ">
+      <div  style="border-radius: 50px;">
+        {% if practicebadge == "lock" %}
+        <img src="/media/practices/images/HuyHieu/lock.png" alt="lock" style="width:50%; border-radius: 50px;">
+        {% else %}
+        <img src="/media/practices/images/HuyHieu/{{practicebadge.logo}}" alt="{{practicebadge.logo}}" style="width:50%; border-radius: 50px;">
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<div class="row justify-content-center">
+  <h1 class="text-center">HUY HIỆU TRANH TÀI</h1>
+  <!-- <div class="col-lg-4 col-md-6 col-sm-6">
+  </div> -->
+  {% for competitionbadge in competitionbadges %}
+  <div class="col-xl-4 col-lg-6 col-md-6 text-center">
+    <div class="course-card style3" style="border: none; border-radius: 50px; ">
+      <div  style="border-radius: 50px;">
+        <img src="/media/competition/{{competitionbadge.logo}}" alt="{{competitionbadge.logo}}" style="width:50%; border-radius: 50px;">
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+  $(document).ready(function () {
+    // Javascript method's body can be found in assets/js/demos.js
+    md.initDashboardPageCharts();
+
+  });
+</script>
+
+{% endblock javascripts %}

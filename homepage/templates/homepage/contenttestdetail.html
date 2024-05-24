@@ -1,0 +1,110 @@
+{% extends "homepage/base2.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- <div class="content-wrapper"> -->
+
+<!-- <div class="breadcrumb-wrap bg-f br-bg-4">
+        <div class="overlay op-8 bg-white"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+                    <div class="breadcrumb-title">
+                        <h2>Vui học cùng Ong Vàng</h2>
+                        <ul class="breadcrumb-menu list-style">
+                            <li><a href="{% url 'homepage:index' %}">Trang chủ </a></li>
+                            <li>Bài học</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+<ul class="nav justify-content-center bg-success">
+    <li class="navbar-brand">
+        <a href="{% url 'homepage:index' %}">
+            <img src="{% static 'img/logo.png' %}" alt="Image" width="100" height="30" />
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-white" href="{% url 'homepage:index' %}"><i class="fa fa-home"></i></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-white" href="{% url 'homepage:test' %}">Quay lại</a>
+    </li>
+</ul>
+
+<!-- <section class="course-wrap ptb-100"> -->
+<section class="pt-2">
+    <div class="container">
+        {% csrf_token %}
+
+        <div id="gamediv" class="d-flex justify-content-center bg-white" style="border-radius: 10px">
+            <iframe id="iframegame" src="/{{test.link}}" style="position:fixed; top:50px; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
+                Your browser doesn't support iframes
+            </iframe>
+        </div>
+        <!-- <script>
+            var gameid = "{{game.pk}}"
+            var topicid = "{{game.topicpracticeid.pk}}"
+            var levelid = "{{level.pk}}"
+
+            function sendtobackend(stars) {
+                $.ajax({
+                    url: "/ajaxtrackcompletelevelgame",
+                    data: {
+                        'gameid': gameid,
+                        'topicid': topicid,
+                        'levelid': levelid,
+                        'stars': stars,
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.flag) {
+                            console.log('json')
+                            clearInterval(loops)
+                            // $('#thacmac').html("Hỏi Đáp")
+                            // $('#thacmaccontent').html("Em Vừa Hoàn Thành Trò Chơi Này Kết Quả Đã Được Lưu Lại")
+                            // wingame();
+                        }
+                    }
+                })
+            }
+            // function wingame(){
+            //                     $.magnificPopup.open({
+            //                     items: {
+            //                     src: '#winpop'
+            //                         },
+            //                     closeBtnInside: true,
+            //                     type: 'inline'
+            //                     });
+            //                 }
+
+            $(document).ready(function () {
+                setTimeout(function () {
+                    loops = setInterval(function () {
+                        var check = document.getElementById("iframegame").contentWindow.blazewarriorsstatusgame;
+                        console.log(check)
+                        var stars = document.getElementById("iframegame").contentWindow.number_star;
+                        console.log(stars)
+
+                        if (check == true) {
+                            clearInterval(loops)
+                            setTimeout(function () {
+                                sendtobackend(stars);
+                            }, 1000)
+                        }
+                    }, 500);
+
+                }, 1000)
+            })
+        </script> -->
+
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "homepage/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="breadcrumb-wrap bg-f br-bg-1">
+    <div class="overlay op-5 bg-white"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+                <div class="breadcrumb-title">
+                    <h2>Khám Phá Cùng Ong Vàng</h2>
+                    <ul class="breadcrumb-menu list-style">
+                        <li><a href="{% url 'homepage:index' %}">Trang chủ </a></li>
+                        <li><a>Tài nguyên </a></li>
+                        <li><a href="{% url 'homepage:news' %}">Tin Tức </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="blog-details-wrap ptb-100 bg-selago">
+    <div class="container">
+        <div class="row gx-5">
+            <div class="col-lg-10 offset-lg-1  col-md-12 col-12">
+                <article class="bg-white">
+                    <div class="post-img" style="margin-left: auto; margin-right: auto;width: 500px;">
+                        <img src="{{news.image}}" alt="Image">
+                    </div>
+                    <h2 class="post-title text-danger">{{news.title}}</h2>
+                    <ul class="post-meta list-style">
+                        <li><i class="las la-clock"></i>Ngày đăng: {{news.createdate|date:"d-m-Y"}}</li>
+                    </ul>
+                    <div class="post-para" style="background-color: #fffcbb;padding: 20px;text-align: justify;">
+                        <p>{{news.content|safe|linebreaks}} </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

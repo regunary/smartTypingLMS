@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<!-- Mirrored from templates.envytheme.com/edulet/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Nov 2021 10:25:48 GMT -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Smart Typing</title>
+
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/png" />
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/jquery-ui-min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/line-awesome.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/flaticon.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/animate.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/swiper-min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script> -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-validator.js' %}"></script>
+    <script src="{% static 'js/form-validation.js' %}"></script>
+
+    <script src="{% static 'js/swiper-min.js' %}"></script>
+
+    <script src="{% static 'js/jquery-appear.js' %}"></script>
+
+    <script src="{% static 'js/jquery-counter.js' %}"></script>
+
+    <script src="{% static 'js/countdown.js' %}"></script>
+    
+    <script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+
+    <script src="{% static 'js/main.js' %}"></script>
+
+</head>
+
+<body>
+    <div class="preloader js-preloader">
+        <img src="{% static 'img/preloader.gif' %}" alt="Image" />
+    </div>
+
+    <div class="page-wrapper">
+        <header class="header-wrap style2">
+            <div class="header-bottom bg-transparent">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-xl-1 col-lg-4 col-md-6 col-6">
+                            <div class="logo">
+                                <a href="{% url 'homepage:index' %}">
+                                    <img src="{% static 'img/logo.png' %}" alt="Image" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-8 col-lg-7 col-md-6 col-6">
+                            <div class="main-menu-wrap" id="s-menu">
+                                <div class="menu-close xl-none" onclick="closeNav()">
+                                    <a href="javascript:void(0)"><i class="las la-times"></i></a>
+                                </div>
+                                <div id="menu" class="text-left">
+                                    <ul class="main-menu list-style">
+                                        <li>
+                                            <a {% if "/" == request.path %} class="active" {% endif %} href="{% url 'homepage:index' %}"><i class="fa fa-home"></i></a>
+                                        </li>
+                                        <li>
+                                            <a {% if "/gioi-thieu" == request.path %} class="active" {% endif %} href="{% url 'homepage:about' %}">Giới Thiệu</a>
+                                        </li>
+                                        <li>
+                                            <a {% if "bai-hoc" in request.path %} class="active" {% endif %} href="{% url 'homepage:lesson' %}">Bài Học</a>
+                                        </li>
+                                        <li>
+                                            <a {% if "/luyen-tap" in request.path %} class="active" {% endif %} href="{% url 'homepage:practice' %}">Luyện Tập</a>
+                                        </li>
+                                        <li>
+                                            <a {% if "/kiem-tra" in request.path %} class="active" {% endif %} href="{% url 'homepage:test' %}">Kiểm Tra</a>
+                                        </li>
+                                        <li>
+                                            <a {% if "/cuoc-thi" in request.path %} class="active" {% endif %} href="{% url 'homepage:competition' %}">Cuộc Thi</a>
+                                        </li>
+                                        <li class="has-children">
+                                            <a {% if "/tin-tuc" in request.path or "/tai-lieu" in request.path %} class="active" {% endif %}>Tài Nguyên</a>
+                                            <ul class="sub-menu list-style">
+                                                <li><a {% if "/tin-tuc" in request.path %} class="active" {% endif %} href="{% url 'homepage:news' %}">Tin Tức</a></li>
+                                                <li><a {% if "/tai-lieu" in request.path %} class="active" {% endif %} href="{% url 'homepage:document' %}">Tài Liệu</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-children">
+                                            <a {% if "/cau-hoi-thuong-gap" == request.path or "/lien-he" == request.path %} class="active" {% endif %}>Hỗ Trợ</a>
+                                            <ul class="sub-menu list-style">
+                                                <li><a {% if "/cau-hoi-thuong-gap" == request.path %} class="active" {% endif %} href="{% url 'homepage:faq' %}">Câu hỏi thường gặp</a></li>
+                                                <li><a {% if "/lien-he" == request.path %} class="active" {% endif %} href="{% url 'homepage:contact' %}">Liên Hệ</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mobile-bar-wrap">
+                                <div class="mobile-menu xl-none">
+                                    <a href="javascript:void(0)" onclick="openNav()"><i class="las la-bars"></i></a>
+                                </div>
+                                <script>
+                                    function openNav() {
+                                        var x = document.getElementById('s-menu');
+                                        x.className += " open";
+                                    }
+                                    function closeNav() {
+                                        var x = document.getElementById('s-menu');
+                                        x.className = x.className.replace(" open", "");
+                                    }
+                                </script>
+                            </div> 
+                        </div>
+                        <div class="col-xl-3 lg-none">
+                            <div class="header-bottom-right">
+                                {% if user.is_authenticated %}
+                                <div class="dropdown">
+                                    <a href="{% url 'homepage:dashboard' user.pk %}">
+                                        <img src="{{account.avatar}}">
+                                        {{user.username}}
+                                        {% if user.username|length < 12 %}
+                                        &emsp;&emsp;&emsp;
+                                        {% else %}
+                                        {% endif %}
+                                    </a>
+                                    <div class="dropdown-content">
+                                        <a class="" href="{% url 'homepage:dashboard' user.pk %}"><p>Thông tin cá nhân</p></a>
+                                        <a class="" href="{% url 'homepage:logout' %}"><p>Đăng xuất</p></a>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <a href="{% url 'homepage:register' %}" class="btn btn-danger">Đăng Ký</a>
+                                &nbsp;
+                                <a href="{% url 'homepage:login' %}" class="btn btn-primary"><i class="las la-user"></i>Đăng Nhập</a>
+                                {% endif %}
+                                <!-- <div class="lang_selctor">
+                                    <i class="las la-globe-africa"></i>
+                                    <select>
+                                        <option value="1">Tiếng Việt</option>
+                                        <option value="2">Tiếng Anh</option>
+                                    </select>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        {% block content %}
+
+        {% endblock %}
+
+        <section class="newsletter-wrap style1 bg-linen ptb-100">
+            <div class="newsletter-shap-3">
+                <img src="{% static 'img/index/sm2.png' %}" alt="Image" />
+            </div> 
+            <div class="container">
+                <div class="newsletter-shap-2">
+                    <img src="{% static 'img/newsletter-shape-2.svg' %}" alt="Image" />
+                </div>
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="section-title style1 mb-40 text-center">
+                            <span>Hãy Tham Gia Cùng Gia Đình Ong Vàng Nhé!</span>
+                            <h2>Smart Typing - BỨT PHÁ KỸ NĂNG ĐÁNH MÁY</h2>
+                            <p>
+                                Liên hệ ngay với chúng tôi
+                            </p>
+                        </div>
+                    </div>
+                    {% comment %} <form method="POST">
+                        {% csrf_token %}
+                        <input type="text" placeholder="Nhập email của bạn:"/>
+                        <button type="submit"><i class="flaticon-send"></i></button>
+                    </form> {% endcomment %}
+                </div>
+                {% comment %} <form method="POST">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Nhập email của bạn:" />
+                </form> {% endcomment %}
+                <div class="col-xl-14 offset-xl-3 col-lg-10 offset-lg-1">
+                    <form class="newsletter-form" method="POST">
+                        {% csrf_token %}
+                        <input type="text" placeholder="Nhập email của bạn:" />
+                        <button class="form-group" type="submit"><i class="flaticon-send"></i></button>
+                    </form>
+                    {% comment %} <form action="#" class="newsletter-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Nhập email của bạn:" />
+                            <button type="submit"><i class="flaticon-send"></i></button>
+                        </div>
+                    </form> {% endcomment %}
+                </div>
+                <div class="row">
+                    {% comment %} <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+                        <form action="#" class="newsletter-form">
+                            <div class="form-group">
+                                <input type="text" placeholder="Nhập email của bạn:" />
+                                <button type="submit"><i class="flaticon-send"></i></button>
+                            </div>
+                        </form>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer-wrap style1">
+            <div class="footer-shape-1">
+                <img src="{% static 'img/footer-shape-1.svg' %}" alt="Image" />
+            </div>
+            <div class="footer-shape-2">
+                <img src="{% static 'img/footer-shape-2.svg' %}" alt="Image" />
+            </div>
+            <div class="footer-shape-3">
+                <img src="{% static 'img/footer-shape-2.svg' %}" alt="Image" />
+            </div>
+            <div class="footer-top bg-jaguar pt-100 pb-70">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="footer-widget">
+                                <h4 class="footer-widget-title">Smart Typing - Bứt phá kỹ năng đánh máy</h4>
+                                <ul class="footer-contact-address list-style">
+
+                                    <li>
+                                        <i class="flaticon-pin"></i>
+                                        <p>
+                                            Chào mừng bạn đến với ứng dụng website hỗ trợ thực hành đánh máy mười ngón.
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="footer-widget">
+                                <h4 class="footer-widget-title">Liên Kết</h4>
+                                <div class="footer-menu">
+                                    <ul class="list-style">
+                                        <li><a href="{% url 'homepage:lesson' %}">Kết Nối Tri Thức</a></li>
+                                        <li><a href="{% url 'homepage:practice' %}">Săn Lùng Kho Báu </a></li>
+                                        <li><a href="{% url 'homepage:competition' %}">Tranh Tài Cùng Ong Vàng</a></li>
+                                        <li><a href="{% url 'homepage:document' %}">Quà Tặng Ý Nghĩa</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom bg-jaguar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <a href="#" class="back-to-top bounce"><i class="las la-arrow-up"></i></a>
+</body>
+
+<!-- Mirrored from templates.envytheme.com/edulet/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Nov 2021 10:26:14 GMT -->
+
+</html>

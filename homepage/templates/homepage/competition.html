@@ -1,0 +1,158 @@
+{% extends "homepage/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="" style="background-image: url(../../static/img/background/bg-competition.png);">
+
+  <div class="breadcrumb-wrap bg-f br-bg-4">
+    <div class="overlay op-8 bg-white"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+          <div class="breadcrumb-title">
+            <h2>Tranh tài cùng Ong Vàng</h2>
+            <ul class="breadcrumb-menu list-style">
+              <li><a href="{% url 'homepage:index' %}">Trang chủ </a></li>
+              <li>Cuộc thi</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="event-wrap ptb-100">
+    <div class="container">
+      <!-- voice -->
+      <iframe src="/media/voice/competition/competition.wav" allow="autoplay" style="display:none" id="iframeAudio"></iframe>
+      <audio autoplay loop id="playAudio">
+        <source src="/media/voice/competition/competition.wav" type="audio/wav">
+      </audio>
+      <script>
+        var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+        if (!isChrome) {
+          $('#iframeAudio').remove()
+        }
+        else {
+          $('#playAudio').remove() // just to make sure that it will not have 2x audio in the background 
+        }
+      </script>
+      <!-- end voice -->
+
+      {% csrf_token %}
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-6 col-md-8">
+          <div class="row justify-content-center">
+            {% for competition in competitions %}
+            <div class="col-xl-5 col-lg-6 col-md-6">
+              <div class="event-card" style="position: relative; left: 0; top: 0;">
+                <div class="event-img">
+                  <img src="{{competition.image}}" alt="Image" style="z-index: 1; width:100%; top: 0; left: 0">
+                </div>
+                <div class="event-info">
+                  <h2 class="text-danger"><i class="far fa-keyboard"></i> {{competition.name}}</h2>
+                </div>
+                <div class="event-venue">
+                  <span>Thời gian diễn ra:</span>
+                  <p>{{competition.startdate|date:"d/m/Y"}} - {{competition.enddate|date:"d/m/Y"}}</p>
+                </div>
+                {% if time.date < competition.startdate.date%} <a style="color:#615a6c">Chưa diễn ra</a>
+                  {% elif time.date <= competition.enddate.date %} <a href="{% url 'homepage:competitiondetail' competition.pk %}" class="link style1 text-danger">Tham gia ngay!<i class="las la-plus"></i></a>
+                    {% if user.is_authenticated and competition.badge is not False %}
+                    <img src="/media/competition/{{competition.badge.logo}}" style="position: absolute; width:80px; top: 300px; left: 260px">
+                    {% endif %}
+                    {% else %}
+                    <a style="color:#615a6c">Đã kết thúc</a>
+                    {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-6 col-md-4 justify-content-center">
+          <div class="cardrank one">
+            <div class="header">
+              <h3 class="title">
+                <h1 style="color:white" class="text-center"> Bảng xếp hạng 
+                  <audio id="voice-ranking" src="/media/voice/competition/ranking.wav"></audio>
+                  <a onclick="document.getElementById('voice-ranking').play()"><i class='fa fa-volume-up'></i></a>
+                </h1>
+              </h3>
+              <div></div>
+            </div>
+            <div class="sort">
+              <div class="day active">
+                <h2> Tháng {{time.month}}/{{time.year}} </h2>
+              </div>
+            </div>
+            <div class="profile">
+              <div class="person second">
+                <div class="num">
+                  <h1> 2 </h1>
+                </div>
+                <i class="fa fa-caret-up" style="color:lightgoldenrodyellow"></i>
+                {% if examiner2 == '?' %} ?
+                <img src="/media/lessons/images/HuyHieu/lock.png" alt="" class="photo">
+                {% else %}
+                <img src="{{examiner2.avatar}}" alt="" class="photo">
+                {% endif %}
+                <p class="link">
+                <h2 style="color:white"> {% if examiner2 == '?' %} ? {% else %} {{examiner2.username}} {% endif %} </h2>
+                </p>
+                <p class="points">{% if examiner2 == '?' %} ? {% else %} {{examiner2.score}} {% endif %}</p>
+              </div>
+              <div class="person first">
+                <div class="num">
+                  <h1> 1 </h1>
+                </div>
+                <i class="fa fa-diamond" style="color:lightgoldenrodyellow"></i>
+                {% if examiner1 == '?' %} ?
+                <img src="/media/lessons/images/HuyHieu/lock.png" alt="" class="photo">
+                {% else %}
+                <img src="{{examiner1.avatar}}" alt="" class="photo">
+                {% endif %} <p class="link">
+                <h2 style="color:white"> {% if examiner1 == '?' %} ? {% else %} {{examiner1.username}} {% endif %} </h2>
+                </p>
+                <p class="points">{% if examiner1 == '?' %} ? {% else %} {{examiner1.score}} {% endif %}</p>
+              </div>
+              <div class="person third">
+                <div class="num">
+                  <h1> 3 </h1>
+                </div>
+                <i class="fa fa-caret-up" style="color:lightgoldenrodyellow"></i>
+                {% if examiner3 == "?" %}
+                <img src="/media/lessons/images/HuyHieu/lock.png" alt="" class="photo">
+                {% else %}
+                <img src="{{examiner3.avatar}}" alt="" class="photo">
+                {% endif %}
+                <p class="link">
+                <h2 style="color:white"> {% if examiner3 == "?" %} ? {% else %} {{examiner3.username}} {% endif %} </h2>
+                </p>
+                <p class="points">{% if examiner3 == '?' %} ? {% else %} {{examiner3.score}} {% endif %}</p>
+              </div>
+            </div>
+            <div class="rest">
+              <div class="others flex">
+                <div class="rank">
+                  <i class="fa fa-caret-up" style="color:lightgoldenrodyellow"></i>
+                  <h3 class="num"> 4 </h3>
+                </div>
+                <div class="info flex">
+                  <img src="https://image.flaticon.com/icons/png/512/4086/4086600.png" alt="" class="p_img">
+                  <p class="link">
+                  <h3 style="color:white"> {% if examiner4 == "?" %} ? {% else %} {{examiner4.username}} {% endif %}
+                  </h3>
+                  </p>
+                  <p class="points">{% if examiner4 == '?' %} ? {% else %} {{examiner4.score}} {% endif %}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% endblock %}

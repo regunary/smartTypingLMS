@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42.002" height="22.001" viewBox="0 0 42.002 22.001">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="crop" width="42" height="22" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Path_10" data-name="Path 10" d="M31.167,0a10.736,10.736,0,0,0-9.335,5.649,6.04,6.04,0,0,1-5.8,3.036l-.549-.042a7.7,7.7,0,0,1-5.78-2.909,5.334,5.334,0,0,0-9.4,1.407A5.9,5.9,0,0,0,0,8.931v.155a5.45,5.45,0,0,0,4.975,5.4A5.3,5.3,0,0,0,9.1,12.975a7.374,7.374,0,0,1,5.726-2.1l1.154.091a6.326,6.326,0,0,1,5.285,4.184,10.755,10.755,0,0,0,10.678,6.831A10.909,10.909,0,0,0,41.8,13.117,10.961,10.961,0,0,0,32.049.031C31.792.011,31.537,0,31.284,0Z" fill="none"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="-0.327" y1="0.735" x2="-0.276" y2="0.735" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f89f6e"/>
+      <stop offset="0.434" stop-color="#f57d78"/>
+      <stop offset="1" stop-color="#f24c88"/>
+    </linearGradient>
+  </defs>
+  <g id="Vector_Smart_Object" data-name="Vector Smart Object" transform="translate(-127.999 -7017)">
+    <g id="Vector_Smart_Object-2" data-name="Vector Smart Object" transform="translate(128 7017)" clip-path="url(#clip-path)">
+      <g id="Group_20" data-name="Group 20">
+        <g id="Group_19" data-name="Group 19" clip-path="url(#clip-path-2)">
+          <rect id="Rectangle_10" data-name="Rectangle 10" width="26.032" height="46.006" transform="translate(-2.189 22.053) rotate(-84.207)" fill="url(#linear-gradient)"/>
+        </g>
+      </g>
+    </g>
+    <path id="Color_Overlay" data-name="Color Overlay" d="M149.267,7032.148a6.324,6.324,0,0,0-5.286-4.183l-1.154-.092a7.371,7.371,0,0,0-5.725,2.1,5.3,5.3,0,0,1-4.127,1.512,5.451,5.451,0,0,1-4.976-5.4v-.156a5.886,5.886,0,0,1,.309-1.79,5.333,5.333,0,0,1,9.4-1.408,7.707,7.707,0,0,0,5.78,2.91l.548.042a6.039,6.039,0,0,0,5.8-3.037,10.737,10.737,0,0,1,9.334-5.649h.117c.254,0,.509.011.765.032A10.9,10.9,0,0,1,170,7027.848v.286a11.773,11.773,0,0,1-.2,1.982,10.912,10.912,0,0,1-9.859,8.861c-.23.014-.456.023-.684.023A10.769,10.769,0,0,1,149.267,7032.148Z" fill="#3db166"/>
+  </g>
+</svg>

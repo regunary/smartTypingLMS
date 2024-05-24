@@ -1,0 +1,101 @@
+{% extends "homepage/base2.html" %}
+
+{% load static %}
+
+{% block content %}
+<!-- <div class="content-wrapper"> -->
+
+    <!-- <div class="breadcrumb-wrap bg-f br-bg-3">
+        <div class="overlay op-8 bg-white"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+                    <div class="breadcrumb-title">
+                        <h2>ĐĂNG KÝ NGAY</h2>
+                        <ul class="breadcrumb-menu list-style">
+                            <li><a href="index.html">Trang chủ </a></li>
+                            <li>Đăng Ký</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <section class="Login-wrap pt-10 pb-100 bg-login-register">
+        <div class="container">
+            <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
+                <form class="login-form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="login-header bg-green">
+                        <h2 class="text-center mb-0">ĐĂNG KÝ</h2>
+                    </div>
+                    <div class="login-body">
+                        <form class="form-wrap" action="#" >
+                         
+                            <div class="row">
+                                <p> {{message}}</p>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="username">Tên Đăng Nhập *</label>
+                                        <input id="username" name="username" type="text" placeholder="tên đăng nhập" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="password1">Mật Khẩu *</label>
+                                        <input id="password1" name="password1" type="password" placeholder="nhập mật khẩu">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="password2">Xác Nhận Mật Khẩu *</label>
+                                        <input id="password2" name="password2" type="password" placeholder="xác nhận mật khẩu">
+                                    </div>
+                                </div>                                
+
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="upload-title" for="avatar">Chọn ảnh đại diện</label>
+                                        <img src="/media/avatar/avatar1.png" name="avatar1.png" style="width:15%; border: 2px green solid; border-radius:50%">
+                                        <img src="/media/avatar/avatar2.png" name="avatar2.png" style="width:15%; border: 2px green solid; border-radius:50%">
+                                        <img src="/media/avatar/avatar3.png" name="avatar3.png" style="width:15%; border: 2px green solid; border-radius:50%">
+                                        <img src="/media/avatar/avatar4.png" name="avatar4.png" style="width:15%; border: 2px green solid; border-radius:50%">
+                                        <input type="file" style="width:36%" name="avatar" class="file-upload-field" value="" accept=".jpg,.png">
+                                        <!-- <div class="file-upload">
+                                            <div class="file-upload-wrapper" data-text="Chọn ảnh đại diện">
+                                                <input id="avatar" name="avatar" type="file" class="file-upload-field" value="" accept=".jpg,.png" required="required">
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+
+                                <!-- <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="upload-title" for="avatar">Chọn ảnh đại diện</label>
+                                        <div class="file-upload">
+                                            <div class="file-upload-wrapper" data-text="Chọn ảnh đại diện">
+                                                <input id="avatar" name="avatar" type="file" class="file-upload-field" value="" accept=".jpg,.png" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <button  class="btn style7 w-100 d-block">ĐĂNG KÝ</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <p class="mb-0">Đã có tài khoản? <a class="link style2" href="{% url 'homepage:login' %}">Đăng Nhập</a></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+<!-- </div> -->
+
+{% endblock %}

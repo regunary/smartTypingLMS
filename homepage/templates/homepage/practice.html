@@ -1,0 +1,90 @@
+{% extends "homepage/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <div class="breadcrumb-wrap bg-f br-bg-4">
+        <div class="overlay op-5 bg-white"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+                    <div class="breadcrumb-title">
+                        <h2>Truy Tìm Kho Báu</h2>
+                        <ul class="breadcrumb-menu list-style">
+                            <li><a href="{% url 'homepage:index' %}">Trang chủ </a></li>
+                            <li><a href="{% url 'homepage:practice' %}">Luyện Tập</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="course-wrap">
+        <div class="container">
+            <!-- voice -->
+            <iframe src="/media/voice/practice/practice.wav" allow="autoplay" style="display:none" id="iframeAudio"></iframe> 
+            <audio autoplay loop id="playAudio" >
+                <source src="/media/voice/practice/practice.wav" type="audio/wav">
+            </audio>
+            <script>
+                var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+                if (!isChrome){
+                    $('#iframeAudio').remove()
+                }
+                else {
+                    $('#playAudio').remove() // just to make sure that it will not have 2x audio in the background 
+                }
+            </script>
+            <!-- end voice -->
+            {% csrf_token %}
+            {% for topic, games in topicpractices.items %} 
+            <div style="position: relative; left: 0; top: 0;">
+                <img alt="{{topic}}" style="display: block;z-index: 1;margin-left: auto; margin-right: auto;" width="25%" src="/media/practices/images/topic{{topic.topicorder}}.png">
+                <audio id="game-{{topic.topicorder}}" src="/media/voice/practice/topic{{topic.topicorder}}.wav"></audio>
+                <a onclick="document.getElementById('game-{{topic.topicorder}}').play()"><i class='fa fa-volume-up text-dark' style="z-index: 3; position: absolute; width:100px; top: 50px; left: 806px"></i></a>
+            </div>
+            <div class="row justify-content-center">
+                {% for game in games %}
+                <div class="col-xl-5 col-lg-6 col-md-6">
+                    <div class="course-card style3" style="border: 3.5px solid #fbdb4a;; border-radius: 50px;">
+                        <div class="course-img" style="border-radius: 50px; position: relative; left: 0; top: 0;">
+                            {% if user.is_authenticated %}
+                                {% if user.username == "lecture1" or user.username == "lecture2" or user.username == "lecture3" %}
+                                    <a href="{% url 'homepage:practicelevel' game.gameid %}">
+                                        <img src="{{game.image}}" alt="{{game.image}}" style="z-index: 1; width:100%; border-radius: 50px; top: 0; left: 0">
+                                        {% if game.has_badge %}
+                                        <img src="/media/practices/images/HuyHieu/game{{game.gameorder}}.png" style="z-index: 3; position: absolute; width:80px; top: 220px; left: 500px">
+                                        {% endif %}
+                                    </a>
+                                {% else %}
+                                    {% if game.lock is False %}
+                                    <a href="{% url 'homepage:practicelevel' game.gameid %}">
+                                        <img src="{{game.image}}" alt="{{game.image}}" style="z-index: 1; width:100%; border-radius: 50px; top: 0; left: 0">
+                                        {% if game.has_badge %}
+                                        <img src="/media/practices/images/HuyHieu/game{{game.gameorder}}.png" style="z-index: 3; position: absolute; width:80px; top: 220px; left: 500px">
+                                        {% endif %}
+                                    </a>
+                                    {% else %}
+                                    <img src="../../../media/practices/images/lock.png" alt="Image;" style="width:100%; border-radius: 50px;">
+                                    {% endif %}
+                                {% endif %}
+                            {% else %}
+                                {% if game.gameorder is 1 %}
+                                <a href="{% url 'homepage:practicelevel' game.gameid %}">
+                                    <img src="{{game.image}}" alt="{{game.image}}" style="width:100%; border-radius: 50px;">
+                                </a>
+                                {% else %}
+                                <img src="../../../media/practices/images/lock.png" alt="Image;" style="width:100%; border-radius: 50px;">
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

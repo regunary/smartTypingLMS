@@ -1,0 +1,70 @@
+{% extends "homepage/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="">
+
+    <div class="breadcrumb-wrap bg-f br-bg-1">
+        <div class="overlay op-5 bg-white"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+                    <div class="breadcrumb-title">
+                        <h2>Các câu hỏi thường gặp</h2>
+                        <!-- <ul class="breadcrumb-menu list-style">
+                            <li><a href="{% url 'homepage:index' %}">Trang chủ </a></li>
+                            <li>Faq</li>
+                        </ul> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="faq-wrapper ptb-100" style="background-color: blanchedalmond;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+                            <div class="section-title style1 mb-40 text-center">
+                                <h2>Các câu hỏi thường gặp</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+                    <div class="faq-content">
+                        {% csrf_token %}
+                        {% for question in questions %}
+                        <div class="faq-item">
+                            <button class="btn-danger d-block w-100 text-start" onclick="myFunction('{{question.pk}}')" style="border: 1px solid black;">
+                                <i class="fa fa-question-circle"></i> {{question.question}}
+                            </button>
+                            <p id="{{question.pk}}" class="hide" style="font-size: 25px;">{{question.answer}} </p>
+                        </div>
+                        {% endfor %}
+                        <!-- <p>Nguồn tham khảo: https://www.typingstudy.com</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function myFunction(id) {
+            var x = document.getElementById(id);
+            if (x.className.indexOf("show") == -1) {
+                x.className += "show";
+            } else {
+                x.className = x.className.replace("show", "");
+            }
+        }
+    </script>
+
+</div>
+
+{% endblock %}

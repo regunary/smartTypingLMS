@@ -1,0 +1,45 @@
+{% extends "homepage/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="breadcrumb-wrap bg-f br-bg-4">
+    <div class="overlay op-5 bg-white"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+                <div class="breadcrumb-title">
+                    <h2>Truy Tìm Kho Báu</h2>
+                    <ul class="breadcrumb-menu list-style">
+                        <li><a href="{% url 'homepage:index' %}">Trang chủ </a></li>
+                        <li><a href="{% url 'homepage:practice' %}">Luyện Tập</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="course-wrap ptb-100">
+    <div class="container">
+        {% csrf_token %}
+        <h2 class="text-center">{{game}}</h2>
+        <div class="row justify-content-center">
+            {% for level in levels %}
+            <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="course-card style3" style="width: 280px; border: none; border-radius: 50px;">
+                    <div class="course-img" style="border-radius: 50px;">
+                        <a {% if level.lock is False %}
+                            href="{% url 'homepage:practicedetail' game.gameid level.levelid %}" {% endif %}>
+                            <img src="{{level.image}}" alt="{{level.image}}" style="width:100%; border-radius: 50px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

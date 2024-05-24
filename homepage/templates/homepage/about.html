@@ -1,0 +1,152 @@
+{% extends "homepage/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="breadcrumb-wrap bg-f br-bg-1">
+        <div class="overlay op-5 bg-white"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+                    <div class="breadcrumb-title">
+                        <h2>Giới thiệu</h2>
+                        <ul class="breadcrumb-menu list-style">
+                            <li><a href="{% url 'homepage:index' %}">Home </a></li>
+                            <li>Giới thiệu</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="category-wrap pt-100 pb-70">
+        <div class="container">
+            <!-- voice -->
+            <iframe src="/media/voice/about.wav" allow="autoplay" style="display:none" id="iframeAudio"></iframe> 
+            <audio autoplay loop id="playAudio" >
+                <source src="/media/voice/about.wav" type="audio/wav">
+            </audio>
+            <script>
+                var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+                if (!isChrome){
+                    $('#iframeAudio').remove()
+                }
+                else {
+                    $('#playAudio').remove() // just to make sure that it will not have 2x audio in the background 
+                }
+            </script>
+            <!-- end voice -->
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+                    <div class="section-title style1 mb-40 text-center">
+                        <span class="text-green">GIỚI THIỆU SMART TYPING</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="category-item-wrap">
+                        <div class="category-item">
+                            <div class="category-icon">
+                                <i class="flaticon-computer"></i>
+                            </div>
+                            <div class="category-name">
+                                <a href="{% url 'homepage:lesson' %}">Kết nối tri thức</a>
+                                <span>27 Bài học</span>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-icon">
+                                <i class="flaticon-mortarboard-1"></i>
+                            </div>
+                            <div class="category-name">
+                                <a href="{% url 'homepage:practice' %}">Săn lùng khó báu</a>
+                                <span>6 Trò chơi</span>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-icon">
+                                <i class="flaticon-international-business"></i>
+                            </div>
+                            <div class="category-name">
+                                <a href="{% url 'homepage:test' %}">Thắng bại tại kỹ năng</a>
+                                <span>6 Bài kiểm tra</span>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-icon">
+                                <i class="flaticon-international-business"></i>
+                            </div>
+                            <div class="category-name">
+                                <a href="{% url 'homepage:competition' %}">Thắng bại tại kỹ năng</a>
+                                <span>1 Cuộc thi</span>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-icon">
+                                <i class="flaticon-data"></i>
+                            </div>
+                            <div class="category-name">
+                                <a href="{% url 'homepage:document' %}">Quà tặng ý nghĩa</a>
+                                <span>3 Tài liệu hướng dẫn</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-wrap style3 pb-100">
+        <div class="container">
+            <div class="about-dot-shape">
+                <img src="{% static 'img/about/about-dot-shape.svg' %}" alt="Image">
+            </div>
+            <div class="about-circle-shape md-none">
+                <img src="{% static 'img/about/about-circle-shape.svg' %}" alt="Image">
+            </div>
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6 offset-lg-1">
+                    <div class="about-img style3 bg-f about-bg-3">
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="content-title about-content">
+                        <div class="about-desc">
+                            <p> Smart Typing lấy biểu tưởng hình ảnh Ong Vàng tương trựng cho đức tính chăm chỉ ham học
+                                và siêng năng rèn luyện kĩ năng đánh máy mười ngón.
+                                Mục đích ra đời của Smart Typing nhằm xây dựng một ứng dụng học tập hoàn toàn miễn phí
+                                thông qua những bài học hướng dẫn và hỗ trợ người học làm quen với bàn phím.
+                                Từ đó, Smart Typing giúp người học luyện tập thực hành đánh máy mười ngón chính xác dưới
+                                dạng những trò chơi săn lùng kho báu. Ngoài ra, hệ thống còn tạo ra sân chơi bổ ích thông qua các cuộc thi định kỳ giúp học
+                                sinh nâng cao kỹ năng đánh máy mười ngón nhanh nhất. </p>
+                            
+                            <p>    Trong quá trình thực hiện, Smart Typing có sử dụng hình ảnh từ các nguồn sau đây: </p>
+                            <p>  <i class="fa fa-heart"></i>  https://www.freepik.com/ </p>
+                            <p>  <i class="fa fa-heart"></i> https://pikbest.com/ </p>
+                            <p>  <i class="fa fa-heart"></i>  https://lovepik.com/ </p>
+                            <p>  <i class="fa fa-heart"></i>  https://www.flaticon.com/ </p>
+                            <p>  <i class="fa fa-heart"></i>  https://pngtree.com/ </p>
+                            <p>  <i class="fa fa-heart"></i>  https://dryicons.com </p>
+                            <p>  <i class="fa fa-heart"></i>  https://favpng.com/ </p>
+                            
+                            <ul class="feature-list style2 list-style">
+                                <li><i class="las la-check-circle"></i>Bài Học Bổ Ích</li>
+                                <li><i class="las la-check-circle"></i>Luyện Tập Kỹ Năng</li>
+                                <li><i class="las la-check-circle"></i>Kiểm Tra Chính Xác</li>
+                                <li><i class="las la-check-circle"></i>Hỗ Trợ Ứng Dụng</li>
+                            </ul>
+                        </div>
+                        <div class="about-btn">
+                            <a href="{% url 'homepage:lesson' %}" class="btn style6 slide_left"><i class="flaticon-log-in"></i>Tham Gia Học Ngay Nào!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

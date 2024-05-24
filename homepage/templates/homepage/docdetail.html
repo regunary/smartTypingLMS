@@ -1,0 +1,52 @@
+{% extends "homepage/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="content-wrapper">
+
+    <div class="breadcrumb-wrap bg-f br-bg-1">
+        <div class="overlay op-5 bg-white"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+                    <div class="breadcrumb-title">
+                        <h2>Khám Phá Cùng Ong Vàng</h2>
+                        <ul class="breadcrumb-menu list-style">
+                            <li><a href="index.html">Trang Chủ </a></li>
+                            <li><a href="blog-no-sidebar.html">Tài Liệu</a></li>
+                            <li>Xem Chi Tiết </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="blog-details-wrap ptb-100 bg-selago">
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-10 offset-lg-1  col-md-12 col-12">
+                    <article class="bg-white">
+                        <!-- <div class="post-img">
+                            <img src="{{document.image}}" alt="Image">
+                        </div>
+                        <ul class="post-meta list-style">
+                            <li><i class="las la-clock"></i><a href="blog-details-right-sidebar.html"> {{document.createdate}} </a></li>
+                          
+                        </ul> -->
+                        <h2 class="post-title">{{document.title|safe}}</h2>
+                        <div class="post-para">
+                            <iframe src="/media/documents/pdf/{{document.pdf}}" style="width: 100%;height: 800px;border: none;"></iframe>
+                        </div>
+                    </article>    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

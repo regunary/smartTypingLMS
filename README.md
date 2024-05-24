@@ -10,28 +10,32 @@ As a backend developer, I built the website for primary students can learn how t
 ## Installation
 This project just kept code only, in the 2.0 version, it becomes to the website which can be expand for meta data. So in this version, It just used render-server-site only.
 
+## Contact
+If you want to buy a new version with RestfulAPI to be easy to extend or you want to custom for your organization, please contact me:
+phone/zalo: 0705161592
+
 ## UI
 ### Sitemap
-<img width="800" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/ddbf79bb-1e12-4956-95fc-41ba220e9049">
+<img width="1000" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/ddbf79bb-1e12-4956-95fc-41ba220e9049">
 
 ### Home page
-<img width="415" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/8a2c7410-5807-48b7-bbe2-4499ef82bcfe">
-<img width="415" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/74f20c2d-65dc-4329-ab7c-1c33d2894bd5">
-<img width="415" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/0113cc99-ccfc-41be-8394-a60f4e99183c">
-<img width="415" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/2418e067-2388-48fd-bf06-6a434e5ac950">
+<img width="1000" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/678e6e89-5598-4f6b-b7ea-6f093079a618">
+<img width="1000" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/b08afad5-82e1-4903-a205-45d553ef6791">
+<img width="1000" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/e71411cc-953e-412e-81c7-4907f8e2d108">
 
 ### Learning page
-<img width="415" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/2af07de7-40e2-4ff2-9e0d-bfd458f3f117">
-<img width="415" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/bdebd6d5-c991-455f-ae7f-eae5dd5fc081">
+<img width="1000" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/1b5c1bd8-4119-4fdc-9748-63abc1f74b67">
+<img width="1000" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/90d07cfb-3784-4c59-a135-341121b2fc9d">
+<img width="1000" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/f02b42c6-cf4e-4224-a60d-e9aafad58047">
 
 ### Gaming practised page
-<img width="415" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/937aea66-446d-4bf8-9557-4572be252ae5">
-<img width="415" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/35cd7aa4-b367-4866-a609-c45835f1fbfc">
+<img width="1000" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/d11d5c0e-ec8f-4a25-ae76-743a4415284b">
 
 ### Testing page
-<img width="415" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/01a56ecd-0eb3-4a34-ac26-19960f56cb91">
-<img width="415" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/b1a31410-f3a4-4a15-94ba-83fa2843d0ff">
+<img width="1000" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/bcc1dd50-a26a-4695-851a-cd6e3e9ea28c">
+<img width="1000" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/58a69027-44d7-4b0e-a56a-d038f886d134">
 
 ### Scordboard page
-<img width="454" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/b9dc192d-9d23-4f2d-a6e1-b489aed7a905">
+<img width="1000" alt="image" src="https://github.com/regunary/smartTypingLMS/assets/89282929/5b8d92e9-f389-4dd5-a82d-acd2e1aaa9fd">
+
 
